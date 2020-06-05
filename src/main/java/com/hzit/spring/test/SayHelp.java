@@ -13,11 +13,6 @@ public class SayHelp {
         this.sayHelo=sayHelo;
     }
 
-    public static void main(String[] args) {
-        ClassPathXmlApplicationContext context=new ClassPathXmlApplicationContext("applicationContext.xml");
-        SayHelp bean=context.getBean("SayHelp",SayHelp.class);
-        System.out.println("etewtetsr");
-       // bean.setSayHelo();
-    }
+
     }
 

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
        xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
        xsi:schemaLocation="
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
@@ -8,17 +9,29 @@
         http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-
+<aop:aspectj-autoproxy/>
 <!--    <bean id="person" class="com.hzit.spring.bean.Person">-->
 <!--        <property name="userName" value="张三"></property>-->
 <!--    </bean>-->
 
 <!--<bean id="sayhello" class="com.hzit.spring.test.SayHelp">-->
-<!--    <property name="sayHelo" ref="SayEnglish"/>-->
+<!--    <property name="sayHelo" ref=""/>-->
 <!--</bean>-->
 <!--    <bean id="SayEnglish" class="com.hzit.spring.test.SayEnglish"/>-->
 <!--    <bean id="SayChinese" class="com.hzit.spring.test.SayChinese"/>-->
-    <context:component-scan base-package="com.hzit.spring"></context:component-scan>
+    <context:component-scan base-package="com.hzit"></context:component-scan>
+<bean id="person" class="com.hzit.spring.limit.Perosnservice"></bean>
+    <bean id="aop" class="com.hzit.spring.util.Myaop"></bean>
+    <aop:config>
+    <aop:pointcut id="pointcut1" expression="execution(* com.hzit.spring.*.*(..))"/>
 
-
+    <aop:aspect ref="aop">
+        <aop:after method="before" pointcut-ref="pointcut1"></aop:after>
+<!--        <aop: beforemethod="afterMethod" pointcut-ref="pointcut1"></aop:>-->
+    </aop:aspect>
+    </aop:config>
 </beans>
+
+
+
+

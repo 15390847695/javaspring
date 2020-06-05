@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
-@WebServlet(urlPatterns = "/login")
+@WebServlet(urlPatterns = "/login1")
 public class loginController extends HttpServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
